@@ -9,21 +9,7 @@ public class Main{
 
         RedBlackTree<Holder> RBT = new RedBlackTree<Holder>();
         RBT.toString();
-        RBT.add(new Holder(20));
-        RBT.toString();
-        // RBT.add(new Holder(12));
-        // RBT.toString();
-        // RBT.add(new Holder(30));
-        // RBT.toString();
-        // RBT.add(new Holder(25));
-        // RBT.toString();
-        // RBT.add(new Holder(15));
-        // RBT.toString();
-        // RBT.add(new Holder(10));
-        // RBT.toString();
-        // RBT.add(new Holder(35));
-        // RBT.toString();
-
+        
         Scanner in = new Scanner(System.in);
         while(true){
             System.out.print("Number: ");
@@ -36,10 +22,6 @@ public class Main{
                 RBT.toString();
             }
         }
-        in.close();
-        
+        in.close();   
     }
-
-
-
 }

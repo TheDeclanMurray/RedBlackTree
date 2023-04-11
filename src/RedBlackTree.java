@@ -1,9 +1,5 @@
 package src;
 
-import java.util.Scanner;
-
-import javax.print.attribute.standard.PrinterMessageFromOperator;
-
 public class RedBlackTree<T extends Comparable<T>> {
     
     public Node<T> root;
@@ -49,55 +45,14 @@ public class RedBlackTree<T extends Comparable<T>> {
         root.color = 0;
     }
 
-    private Node<T> __adder__(Node<T> GPrnt, Node<T> Prnt, Node<T> curr, Node<T> baby){
-        if( curr == null){
-            curr = baby;
-            return curr;
-        }
-        if(curr.data.compareTo(baby.data) >= 0){
-            //left sub tree
-            curr.left = __adder__(Prnt, curr, curr.left, baby);
-
-        }else{
-            //right sub tree
-            curr.right = __adder__(Prnt, curr, curr.right, baby);
-
-        }
-
-        return null;
-    }
-
-
     private Node<T> plus(Node<T> curr, Node<T> child, Node<T> gChild, Node<T> baby, boolean childLeft, boolean gChildLeft){
-        String prnt = "\nCurr: ";
-        if( curr == null){
-            prnt += "null";
-        }else{
-            prnt += curr.toString();
-        }
-        prnt += "\nChild: ";
-        if( child == null){
-            prnt += "null";
-        }else{
-            prnt += child.toString();
-        }
-        prnt += "\nG-Child: ";
-        if( gChild == null){
-            prnt += "null";
-        }else{
-            prnt += gChild.toString();
-        }
-        // System.out.println(prnt);
-
-
+    
         boolean foundBaby = false;
 
         if ( gChild == null){
             // found the leaf
-            // System.out.println("Found the Spot");
             if (child == null){
                 //root
-                // System.out.println("Root empty, thats the spot");
                 root = baby;
                 return null;
             }
@@ -112,11 +67,9 @@ public class RedBlackTree<T extends Comparable<T>> {
             // put go left or right down the tree
             if (gChild.data.compareTo(baby.data) < 0){
                 // Left
-                // System.out.println("To the Left");
                 rtn = plus(child, gChild, gChild.left, baby, gChildLeft, true);
             }else{
                 // right
-                // System.out.println("To the Right");
                 rtn = plus(child, gChild, gChild.right, baby, gChildLeft, false);
             }
 
@@ -137,18 +90,12 @@ public class RedBlackTree<T extends Comparable<T>> {
             }
         }
 
-        
-
-        
-
+        // end of the line
         if(curr == null){
             return null;
         }
 
-
         // handle the way back up
-
-
         if(child.color == 1 && gChild.color == 1){
             // Problem
             Node<T> uncle = curr.getChild(!childLeft);
@@ -184,18 +131,10 @@ public class RedBlackTree<T extends Comparable<T>> {
                     uncle.color = 0;
                 }
             }
-            // if(uncle == null || uncle.color == 1){
-                
-            // }else{
-                
-            // }
-
-
-
         }
-
         return null;
     }    
+
 
     public void remove( T data ){
 
@@ -205,7 +144,6 @@ public class RedBlackTree<T extends Comparable<T>> {
     public String toString(){
         String rtn = "";
         
-        // "[15]"
         // 1                       [   ]
         // 2           [   ]                    [   ]
         // 3    [   ]        [   ]        [   ]        [   ]
@@ -309,10 +247,7 @@ public class RedBlackTree<T extends Comparable<T>> {
             }else{
                 str = "R"+str;
             }
-
-
             return str;
         }
-
     }
 }
